@@ -10,7 +10,7 @@ import { getLocationStats, getRequestStats, getVisitorStats } from './handleRout
 
 const server = http.createServer(async (req, res) => {
   const { url, method } = req;
-  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500'); 
+  res.setHeader('Access-Control-Allow-Origin', 'https://abdulloh-service.robohouse.tech'); 
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -21,24 +21,24 @@ const server = http.createServer(async (req, res) => {
     return res.end();
   }
 
-  if (url === '/auth/register' && method === 'POST') register(req, res);
-  else if (url === '/auth/login' && method === 'POST') login(req, res);
-  else if (url === '/auth/logout' && method === 'POST') logout(req, res);
-  else if (url === '/service/create' && method === 'POST') createServiceRequest(req, res);
-  else if (url === '/auth/current-user' && method === 'GET') getAuthUser(req, res);
-  else if (url === "/stuff/create") createRoles(req, res);
-  else if (url === "/users" && method === "GET") getAllUsers(req, res);
-  else if (url === "/users-profile" && method === "PUT") partialUpdateUser(req, res);
-  else if (url.startsWith('/service/send') && method === 'POST') sendToMaster(req, res, url);
-  else if (url === '/service-request' && method === 'GET') getAllServices(req, res);
-  else if (url === '/service-request/update' && method === 'PUT') updateService(req, res);
-  else if (url === '/service-request/complete' && method === 'PUT') completeService(req, res);
-  else if (url ==="/service-request/status/update" && method === 'PUT')updateServiceStatus(req, res)
-  else if (url === '/components' && method === 'POST') createComponent(req, res)
-  else if (url === '/components' && method === 'GET') getAllComponents(req, res);
-  else if (url === '/stats/visitors' && method === 'GET') getVisitorStats(req, res);
-  else if (url === '/stats/locations' && method === 'GET') getLocationStats(req, res);
-  else if (url === '/stats/requests' && method === 'GET') getRequestStats(req, res);
+  if (url === '/api/auth/register' && method === 'POST') register(req, res);
+  else if (url === '/api/auth/login' && method === 'POST') login(req, res);
+  else if (url === '/api/auth/logout' && method === 'POST') logout(req, res);
+  else if (url === '/api/service/create' && method === 'POST') createServiceRequest(req, res);
+  else if (url === '/api/auth/current-user' && method === 'GET') getAuthUser(req, res);
+  else if (url === "/api/stuff/create") createRoles(req, res);
+  else if (url === "/api/users" && method === "GET") getAllUsers(req, res);
+  else if (url === "/api/users-profile" && method === "PUT") partialUpdateUser(req, res);
+  else if (url.startsWith('/api/service/send') && method === 'POST') sendToMaster(req, res, url);
+  else if (url === '/api/service-request' && method === 'GET') getAllServices(req, res);
+  else if (url === '/api/service-request/update' && method === 'PUT') updateService(req, res);
+  else if (url === '/api/service-request/complete' && method === 'PUT') completeService(req, res);
+  else if (url ==="/api/service-request/status/update" && method === 'PUT')updateServiceStatus(req, res)
+  else if (url === '/api/components' && method === 'POST') createComponent(req, res)
+  else if (url === '/api/components' && method === 'GET') getAllComponents(req, res);
+  else if (url === '/api/stats/visitors' && method === 'GET') getVisitorStats(req, res);
+  else if (url === '/api/stats/locations' && method === 'GET') getLocationStats(req, res);
+  else if (url === '/api/stats/requests' && method === 'GET') getRequestStats(req, res);
  
   else {
     res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -47,7 +47,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 connect().then(() => {
-  server.listen(3000, () => {
-    console.log('Server running on http://localhost:3000')
+  server.listen(8001, () => {
+    console.log('Server running on https://abdulloh-service.robohouse.tech');
   });
 });
