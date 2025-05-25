@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Pro - Yangi So'rov</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        'dark-light': '#1e293b',
+                        'dark-lighter': '#334155'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .sidebar-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-link.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white min-h-screen">
+    <nav class="bg-dark-light border-b border-gray-800 fixed w-full z-40">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <button id="sidebarToggle" class="lg:hidden text-gray-400 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-bolt text-white text-sm"></i>
+                        </div>
+                        <h1
+                            class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                            TechFix Pro
+                        </h1>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-3">
+                        <div class="text-right">
+                            <div id="userWelcome" class="text-sm font-medium text-white"></div>
+                            <div id="userRole" class="text-xs text-gray-400"></div>
+                        </div>
+                    </div>
+                    <button onclick="logout()"
+                        class="bg-red-600/20 text-red-400 px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-600/30 transition-all">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Chiqish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex pt-16">
+        <div id="sidebar"
+            class="fixed inset-y-0 left-0 z-30 w-64 bg-dark-light border-r border-gray-800 transform -translate-x-full lg:translate-x-0 sidebar-transition pt-16">
+            <div class="p-4 h-full overflow-y-auto">
+                <div id="sidebarContent"></div>
+            </div>
+        </div>
+
+        <div class="flex-1 lg:ml-64 p-6">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">Yangi Xizmat So'rovini Yaratish</h1>
+                <p class="text-gray-400">Uskunangiz uchun yangi ta'mirlash so'rovini yuboring</p>
+            </div>
+            <div class="bg-dark-light rounded-2xl p-8 border border-gray-800">
+                <form id="dashboardServiceRequestForm" class="space-y-6">
+                    <input type="hidden" id="fullName" name="fullName">
+                    <input type="hidden" id="email" name="email">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="dashboardDeviceModel" class="block text-sm font-medium text-gray-300">Uskuna
+                                Modeli *</label>
+                            <input type="text" id="dashboardDeviceModel" name="device_model" required
+                                placeholder="masalan, iPhone 13, Samsung Galaxy S21"
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="dashboardIssueType" class="block text-sm font-medium text-gray-300">Muammo Turi
+                                *</label>
+                            <select id="dashboardIssueType" name="issue_type" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="">Muammo Turini Tanlang</option>
+                                <option value="hardware">Uskuna Muammosi</option>
+                                <option value="software">Dasturiy Muammo</option>
+                                <option value="other">Boshqa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="dashboardProblemArea" class="block text-sm font-medium text-gray-300">Muammo
+                                Joyi</label>
+                            <input type="text" id="dashboardProblemArea" name="problem_area"
+                                placeholder="masalan, Ekran, Batareya, Zaryadlash porti"
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="dashboardIssueType" class="block text-sm font-medium text-gray-300">Muammo Turi
+                                *</label>
+                            <select id="dashboardIssueType" name="location" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="">Manzil Tanlang</option>
+                                <option value="Sergili">Sergili</option>
+                                <option value="Yunusobod">Yunusobod</option>
+                                <option value="Shayxontohur">Shayxontohur</option>
+                                <option value="Olmazor">Olmazor</option>
+                                <option value="Uchtepa">Uchtepa</option>
+                                <option value="Yakkasaroy">Yakkasaroy</option>
+                                <option value="Yangihayot">Yangihayot</option>
+                                <option value="Mirobod">Mirobod</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="dashboardDescription" class="block text-sm font-medium text-gray-300">Muammo Tavsifi
+                            *</label>
+                        <textarea id="dashboardDescription" name="description" rows="4" required
+                            placeholder="Muammoni batafsil tariflang..."
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit"
+                            class="gradient-primary px-8 py-3 rounded-xl text-white font-semibold hover:shadow-lg transition-all inline-flex items-center">
+                            <span id="submitText">So'rovni Yuborish</span>
+                            <i id="submitLoader" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-20 hidden lg:hidden"></div>
+
+    <div id="modalContainer"></div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/create-request.js"></script>
+</body>
+
+</html>

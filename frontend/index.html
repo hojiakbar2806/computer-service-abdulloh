@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Pro - Ilg'or Uskuna Ta'mirlash Yechimlari</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="antialiased bg-dark text-white">
+    <nav class="fixed w-full z-50 bg-dark/90 glass-effect border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="/"
+                        class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Dern Support
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#services"
+                        class="text-gray-300 hover:text-white transition-colors duration-200">Xizmatlar</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-200">Aloqa</a>
+                    <a href="dashboard.html"
+                        class="gradient-primary px-6 py-2 rounded-full text-white font-medium hover:scale-105 transition-transform">
+                        Boshqaruv Paneli
+                    </a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-dark/95 glass-effect hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-6">
+            <button id="mobileMenuClose" class="absolute top-4 right-4 text-gray-300 hover:text-white">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <a href="#services" class="text-xl text-gray-300 hover:text-white transition-colors">Xizmatlar</a>
+            <a href="#contact" class="text-xl text-gray-300 hover:text-white transition-colors">Aloqa</a>
+            <a href="dashboard.html"
+                class="gradient-primary px-6 py-3 rounded-full text-white font-medium text-lg hover:scale-105 transition-transform">
+                Boshqaruv Paneli
+            </a>
+        </div>
+    </div>
+
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 gradient-dark"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-80 h-80 bg-primary/15 rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-secondary/15 rounded-full blur-3xl floating"
+                style="animation-delay: -2s;"></div>
+        </div>
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="slide-in">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    <span class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Texnologiyalar
+                        Asrida Sifatli</span>
+                    <br>
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Uskuna
+                        Ta'mirlash</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Sun'iy intellekt yordamida tezkor diagnostika, darhol narx takliflari va tezkor xizmat ko'rsatish
+                    bilan uskuna ta'mirlashning kelajagini kashf eting.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('contact')"
+                        class="gradient-primary px-8 py-3 rounded-full text-white font-semibold text-lg hover-scale">
+                        <i class="fas fa-rocket mr-2"></i> Buyurtma Berish
+                    </button>
+                    <button onclick="showAuthModal('login')"
+                        class="glass-effect px-8 py-3 rounded-full text-white font-semibold text-lg hover-scale">
+                        <i class="fas fa-user-circle mr-2"></i> Kirish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-dark-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center slide-in">
+                    <div
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-white mb-2">
+                        10K+</div>
+                    <div class="text-gray-400 text-sm">Ta'mirlangan Uskunalar</div>
+                </div>
+                <div class="text-center slide-in" style="animation-delay: 0.1s;">
+                    <div
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-white mb-2">
+                        24/7</div>
+                    <div class="text-gray-400 text-sm">Qo'llab-quvvatlash</div>
+                </div>
+                <div class="text-center slide-in" style="animation-delay: 0.2s;">
+                    <div
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-white mb-2">
+                        98%</div>
+                    <div class="text-gray-400 text-sm">Muvaffaqiyat Darajasi</div>
+                </div>
+                <div class="text-center slide-in" style="animation-delay: 0.3s;">
+                    <div
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-white mb-2">
+                        2S</div>
+                    <div class="text-gray-400 text-sm">O'rtacha Ta'mirlash Vaqti</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 slide-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-white">Bizning
+                        Xizmatlar</span>
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    Ilg'or texnologiya va yuqori sifatli hunarmandchilik bilan ta'minlangan zamonaviy ta'mirlash
+                    yechimlari.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="group bg-dark-light rounded-2xl p-6 border border-gray-800 hover:border-primary/50 hover-scale">
+                    <div
+                        class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-desktop text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Kompyuter Xizmatlari</h3>
+                    <p class="text-gray-400 text-sm mb-4">Stol va noutbuk kompyuterlari uchun ta’mirlash, sozlash va
+                        yetkazib
+                        berish.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Operatsion tizim
+                            o‘rnatish</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Viruslardan
+                            tozalash</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Qurilmani
+                            tezlashtirish</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Yetkazib berish
+                            xizmati</li>
+                    </ul>
+                </div>
+
+                <div class="group bg-dark-light rounded-2xl p-6 border border-gray-800 hover:border-primary/50 hover-scale">
+                    <div
+                        class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-truck text-white text-xl"></i> 
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Yetkazib Beramiz</h3>
+                    <p class="text-gray-400 text-sm mb-4">Buyurtmalaringizni tez va ishonchli yetkazib beramiz.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Tez yetkazib berish</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Manzilingizga xizmat</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Onlayn buyurtma qabul qilish</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Ishonchli xizmat kafolati</li>
+                    </ul>
+                </div>
+            
+
+                <div
+                    class="group bg-dark-light rounded-2xl p-6 border border-gray-800 hover:border-primary/50 hover-scale">
+                    <div
+                        class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tools text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tez va Ishonchli Xizmat</h3>
+                    <p class="text-gray-400 text-sm mb-4">Uyga yetkazib berish, onlayn buyurtma va arzon narxlarda
+                        xizmatlar.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Onlayn buyurtma
+                            qabul qilish
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Manzilingizga
+                            yetkazib berish
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Hamyonbop narxlar
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Kafolatli xizmat
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-dark-light relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 slide-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Uskunangizni
+                        Ta'mirlashga Tayyormisiz?</span>
+                </h2>
+                <p class="text-lg text-gray-400">60 soniyadan kam vaqt ichida tezkor diagnostika va ta'mirlash narxini
+                    oling.</p>
+            </div>
+            <div class="bg-dark-light/50 glass-effect rounded-2xl p-8 border border-gray-800">
+                <form id="serviceRequestForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="fullName" class="block text-sm font-medium text-gray-300">To'liq Ism</label>
+                            <input type="text" id="fullName" name="fullName" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                                placeholder="To'liq ismingizni kiriting">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="block text-sm font-medium text-gray-300">Elektron Pochta</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                                placeholder="sizning@email.com">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="device_model" class="block text-sm font-medium text-gray-300">Uskuna
+                                Modeli</label>
+                            <input type="text" id="device_model" name="device_model" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                                placeholder="masalan, iPhone 14 Pro">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="issue_type" class="block text-sm font-medium text-gray-300">Muammo
+                                Kategoriyasi</label>
+                            <select id="issue_type" name="issue_type" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                                <option value="">Muammo turini tanlang</option>
+                                <option value="hardware">Uskuna Nosozligi</option>
+                                <option value="software">Dasturiy Nosozliklar</option>
+                                <option value="other">Boshqa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="dashboardProblemArea" class="block text-sm font-medium text-gray-300">Muammo
+                                Joyi</label>
+                            <input type="text" id="dashboardProblemArea" name="problem_area"
+                                placeholder="masalan, Ekran, Batareya, Zaryadlash porti"
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="dashboardIssueType" class="block text-sm font-medium text-gray-300">Muammo Turi
+                                *</label>
+                            <select id="dashboardIssueType" name="location" required
+                                class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                                <option value="">Manzil Tanlang</option>
+                                <option value="Sergili">Sergili</option>
+                                <option value="Yunusobod">Yunusobod</option>
+                                <option value="Shayxontohur">Shayxontohur</option>
+                                <option value="Olmazor">Olmazor</option>
+                                <option value="Uchtepa">Uchtepa</option>
+                                <option value="Yakkasaroy">Yakkasaroy</option>
+                                <option value="Yangihayot">Yangihayot</option>
+                                <option value="Mirobod">Mirobod</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="description" class="block text-sm font-medium text-gray-300">Batafsil Tavsif</label>
+                        <textarea id="description" name="description" rows="4" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
+                            placeholder="Muammoni batafsil tariflang..."></textarea>
+                    </div>
+                    <label class="inline-flex items-center mt-4">
+                        <input type="checkbox" name="terms" class="form-checkbox text-primary" required>
+                        <span class="ml-2 text-gray-300">Foydalanish shartlariga roziman</span> </label>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="gradient-primary px-8 py-3 rounded-full text-white font-semibold text-lg hover-scale inline-flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            <span id="submitText">Ta'mirlash So'rovini Yuborish</span>
+                            <i id="submitLoader" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark border-t border-gray-800 p-10">
+        <p class="text-center text-gray-400">© 2025 Dern Support Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <div id="authModal" class="fixed inset-0 bg-black/80 glass-effect hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-dark-light rounded-2xl p-8 max-w-md w-full border border-gray-800">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="authTitle" class="text-2xl font-bold text-white">Kirish</h2>
+                    <button onclick="hideAuthModal()" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <form id="loginForm" class="space-y-4">
+                    <div class="space-y-2">
+                        <label for="loginEmail" class="block text-sm font-medium text-gray-300">Elektron Pochta</label>
+                        <input type="email" id="loginEmail" name="email" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="loginPassword" class="block text-sm font-medium text-gray-300">Parol</label>
+                        <input type="password" id="loginPassword" name="password" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <button type="submit"
+                        class="w-full gradient-primary py-3 rounded-xl text-white font-semibold hover-scale">
+                        Kirish
+                    </button>
+                </form>
+                <form id="registerForm" class="space-y-4 hidden">
+                    <div class="space-y-2">
+                        <label for="registerFirstName" class="block text-sm font-medium text-gray-300">Ism</label>
+                        <input type="text" id="registerFirstName" name="firstName" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="registerLastName" class="block text-sm font-medium text-gray-300">Familiya</label>
+                        <input type="text" id="registerLastName" name="lastName" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="registerEmail" class="block text-sm font-medium text-gray-300">Elektron
+                            Pochta</label>
+                        <input type="email" id="registerEmail" name="email" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="registerPassword" class="block text-sm font-medium text-gray-300">Parol</label>
+                        <input type="password" id="registerPassword" name="password" required
+                            class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all">
+                    </div>
+                    <button type="submit"
+                        class="w-full gradient-primary py-3 rounded-xl text-white font-semibold hover-scale">
+                        Hisob Yaratish
+                    </button>
+                </form>
+                <div class="mt-4 text-center text-sm">
+                    <span id="authSwitchText" class="text-gray-400">Hisobingiz yo'qmi?</span>
+                    <button id="authSwitchBtn" onclick="toggleAuthMode()"
+                        class="text-primary hover:text-secondary font-medium ml-1">
+                        Ro'yxatdan o'tish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
