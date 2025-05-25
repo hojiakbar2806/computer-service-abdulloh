@@ -83,7 +83,7 @@ export async function createServiceRequest(req, res) {
 
 export async function sendToMaster(req, res, url) {
   const parts = url.split('/'); 
-  const serviceId = parts[3]; 
+  const serviceId = parts[4]; 
 
   if (!serviceId) {
     res.writeHead(400, { 'Content-Type': 'application/json' });
