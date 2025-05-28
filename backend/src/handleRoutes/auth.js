@@ -8,13 +8,17 @@ const users = db.collection("users");
 
 export async function register(req, res) {
   try {
-    const { email, password, firstName, lastName } = await handleRequest(req);
+    const { email, password, firstName, lastName, isLegalEntity, companyName } = await handleRequest(req);
 
     if (!email || !password || !firstName || !lastName)
       return sendJson(res, 400, { error: "Barcha maydonlar to'ldirilishi kerak" });
 
     if (await users.findOne({ email }))
       return sendJson(res, 409, { error: "Bu email ro'yxatdan o'tgan" });
+
+    if (isLegalEntity)
+      if (!companyName)
+        return sendJson(res, 400, { error: "Barcha maydonlar to'ldirilishi kerak" });
 
     const hashedPassword = await hashPassword(password);
     const result = await users.insertOne({
@@ -23,13 +27,15 @@ export async function register(req, res) {
       firstName,
       lastName,
       role: "user",
+      isLegalEntity,
+      companyName,
       createdAt: new Date(),
     });
 
     const token = createToken({ id: result.insertedId });
 
     sendJson(res, 201, {
-      message: "Foydalanuvchi muvaffaqiyatli ro'yxatdan o'tdi",
+      message: "Siz muvaffaqiyatli ro'yxatdan o'tdingiz",
       userId: result.insertedId,
     }, token);
   } catch (err) {

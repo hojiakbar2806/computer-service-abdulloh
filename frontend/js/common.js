@@ -161,7 +161,10 @@ async function initPage(page) {
         const userWelcome = document.getElementById('userWelcome');
         const userRole = document.getElementById('userRole');
 
-        if (userRole) {
+        if (user?.isLegalEntity) {
+            userRole.textContent = `${role} (Yuridik shaxs)`;
+        }
+        else{
             userRole.textContent = role;
         }
 

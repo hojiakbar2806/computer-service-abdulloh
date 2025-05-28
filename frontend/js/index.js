@@ -37,6 +37,21 @@ function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 }
 
+// Function to toggle company name field visibility
+function toggleCompanyNameField() {
+    const isLegalSelect = document.querySelector('select[name="isLegalEntity"]');
+    const companyNameDiv = document.getElementById('companyName').closest('.space-y-2');
+    
+    if (isLegalSelect.value === 'true') {
+        companyNameDiv.style.display = 'block';
+        document.getElementById('companyName').required = true;
+    } else {
+        companyNameDiv.style.display = 'none';
+        document.getElementById('companyName').required = false;
+        document.getElementById('companyName').value = '';
+    }
+}
+
 async function login(email, password) {
     try {
         const data = await apiRequest('/auth/login', {
@@ -71,10 +86,10 @@ async function createServiceRequest(requestData) {
             method: 'POST',
             body: JSON.stringify(requestData)
         });
-        showNotification(data.message || 'Xizmat so‘rovi muvaffaqiyatli yuborildi! 24 soat ichida siz bilan bog‘lanamiz.', 'success');
+        showNotification(data.message || "Xizmat so'rovi muvaffaqiyatli yuborildi! 24 soat ichida siz bilan bog'lanamiz.", 'success');
         document.getElementById('serviceRequestForm').reset();
     } catch (error) {
-        showNotification(error.message || 'Xizmat so‘rovini yuborishda xatolik', 'error');
+        showNotification(error.message || "Xizmat so'rovini yuborishda xatolik", "error");
     }
 }
 
@@ -84,7 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuClose = document.getElementById('mobileMenuClose');
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     mobileMenuClose.addEventListener('click', toggleMobileMenu);
-
+    const isLegalSelect = document.querySelector('select[name="isLegalEntity"]');
+    if (isLegalSelect) {
+        isLegalSelect.addEventListener('change', toggleCompanyNameField);
+        toggleCompanyNameField();
+    }
 
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -97,22 +116,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            
+
             const userData = {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
                 email: formData.get('email'),
                 password: formData.get('password')
             };
+            
+
+            const isLegalEntity = formData.get('isLegalEntity') === 'true';
+            if (isLegalEntity) {
+                userData.isLegalEntity = true;
+                userData.companyName = formData.get('companyName');
+            }
+            
             await register(userData);
         });
     }
-
 
     const serviceRequestForm = document.getElementById('serviceRequestForm');
     if (serviceRequestForm) {
@@ -131,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
             submitLoader.classList.add('hidden');
         });
     }
-
 
     document.getElementById('authModal').addEventListener('click', function(e) {
         if (e.target === this) {
