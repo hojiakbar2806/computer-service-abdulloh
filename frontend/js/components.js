@@ -37,7 +37,7 @@ async function displayComponentsList() {
                     <thead>
                         <tr class="text-gray-400">
                             <th class="p-4">Nomi</th>
-                            <th class="p-4">Narxi (USD)</th>
+                            <th class="p-4">Narxi (UZS)</th>
                             <th class="p-4">Miqdori</th>
                             <th class="p-4">Qo'shilgan Sana</th>
                         </tr>
@@ -46,7 +46,7 @@ async function displayComponentsList() {
                         ${data.map(component => `
                             <tr class="border-t border-gray-800 hover:bg-dark-lighter">
                                 <td class="p-4">${component.name || 'N/A'}</td>
-                                <td class="p-4">$${component.price || 0}</td>
+                                <td class="p-4">${component.price || 0}</td>
                                 <td class="p-4">${component.quantity || 0}</td>
                                 <td class="p-4">${formatDate(component.createdAt)}</td>
                             </tr>
@@ -94,7 +94,7 @@ function showCreateComponent() {
                             class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all">
                     </div>
                     <div class="space-y-2">
-                        <label for="price" class="block text-sm font-medium text-gray-300">Narxi (USD) *</label>
+                        <label for="price" class="block text-sm font-medium text-gray-300">Narxi (UZS) *</label>
                         <input type="number" id="price" name="price" required min="0" step="0.01"
                             placeholder="Narxni kiriting"
                             class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all">
